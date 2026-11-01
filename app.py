@@ -9,7 +9,7 @@ from sklearn.metrics import mean_squared_error, mean_absolute_error
 from sklearn.cluster import KMeans
 
 # Tải dữ liệu từ Yahoo Finance
-@st.cache
+@st.cache_resource
 def load_data(ticker):
     stock_data = yf.download(ticker, start="2020-01-01", end="2023-01-01")
     stock_data['EMA100'] = stock_data['Close'].ewm(span=100, adjust=False).mean()
